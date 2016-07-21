@@ -11,6 +11,11 @@
 
 	<!-- 依赖管理 -->
 	<dependencies>
+        <dependency>
+            <groupId>com.boz</groupId>
+            <artifactId>boz00-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 		<dependency>
 			<groupId>com.boz</groupId>
 			<artifactId>boz00-pojo</artifactId>
