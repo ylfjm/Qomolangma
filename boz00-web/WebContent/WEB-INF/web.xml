@@ -21,6 +21,14 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!-- <context-param>
+        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-value>/WEB-INF/tiles.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener
+        </listener-class>
+    </listener> -->
     <!-- 解决post乱码 -->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
