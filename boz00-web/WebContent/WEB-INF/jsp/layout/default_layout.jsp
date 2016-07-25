@@ -5,13 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<script type="text/javascript" src="script/jquery/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="script/bootstrap/bootstrap.js"></script>
 </head>
 <body>
-	<div class="navbar navbar-fixed-top topbar">
-		<tiles:insertAttribute name="header" />
-		<tiles:insertAttribute name="menu" />
-		<tiles:insertAttribute name="body" />
-		<tiles:insertAttribute name="footer" />
-	</div>
+    <tiles:insertAttribute name="header" />
+    <tiles:insertAttribute name="menu" />
+    <tiles:insertAttribute name="body" />
+    <tiles:insertAttribute name="footer" />
 </body>
 </html>

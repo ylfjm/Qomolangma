@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<body>
-    <h1>FOOT</h1>
-</body>
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+        <p>this is my page.</p>
+    </div>
+</footer>
