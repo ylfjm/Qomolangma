@@ -26,73 +26,61 @@ body {
                     <li>温馨提示：为保证最佳的效果，请在 IE10+、Chrome、Firefox 和 Safari 等现代浏览器中浏览。</li>
                 </ul>
             </div>
-        </div>
-        <div class="col-1-1 controls" style="padding-right: 0">
-            <form class="form">
-            </form>
+            <form class="form"></form>
         </div>
     </div>
     <div id="canvas"></div>
 </body>
 <script type="text/javascript" src="script/jquery/jquery-3.1.0.min.js"></script>
+<!-- 球组件 -->
 <script type="text/javascript" src="script/ball-pool/protoclass.js"></script>
 <script type="text/javascript" src="script/ball-pool/box2d.js"></script>
 <script type="text/javascript" src="script/ball-pool/Main.js"></script>
-
+<!-- 动态字体组件 -->
 <script type="text/javascript" src="script/textillate/jquery.fittext.js"></script>
 <script type="text/javascript" src="script/textillate/jquery.lettering.js"></script>
 <script type="text/javascript" src="script/textillate/jquery.textillate.js"></script>
 <script type="text/javascript" src="script/textillate/highlight.min.js"></script>
-
 <script>
-  $(function (){
+    $(function() {
 
-    var animateClasses = 'flash bounce shake tada swing wobble pulse flip flipInX flipOutX flipInY flipOutY fadeIn fadeInUp fadeInDown fadeInLeft fadeInRight fadeInUpBig fadeInDownBig fadeInLeftBig fadeInRightBig fadeOut fadeOutUp fadeOutDown fadeOutLeft fadeOutRight fadeOutUpBig fadeOutDownBig fadeOutLeftBig fadeOutRightBig bounceIn bounceInDown bounceInUp bounceInLeft bounceInRight bounceOut bounceOutDown bounceOutUp bounceOutLeft bounceOutRight rotateIn rotateInDownLeft rotateInDownRight rotateInUpLeft rotateInUpRight rotateOut rotateOutDownLeft rotateOutDownRight rotateOutUpLeft rotateOutUpRight hinge rollIn rollOut';
+        var $form = $('.form'), $viewport = $('.viewport');
 
-    var $form = $('.form')
-      , $viewport = $('.viewport');
+        var getFormData = function() {
+            var data = {
+                "loop" : true,
+                "in" : {
+                    callback : null
+                },
+                "out" : {
+                    callback : null
+                }
+            };
+            data["in"]["type"] = "sequence";
+            data["in"]["effect"] = "fadeInLeftBig";
+            data["out"]["type"] = "shuffle";
+            data["out"]["effect"] = "hinge";
+            data["in"].shuffle = false;
+            data["in"].reverse = false;
+            data["in"].sync = false;
+            data["out"].shuffle = true;
+            data["out"].reverse = false;
+            data["out"].sync = false;
+            return data;
+        };
 
-    var getFormData = function () {
-      var data = { 
-        "loop": true, 
-        "in": { callback: null }, 
-        "out": { callback: null }
-      };
-      data["in"]["type"] = "sequence";
-      data["in"]["effect"] = "fadeInLeftBig";
-      data["out"]["type"] = "shuffle";
-      data["out"]["effect"] = "hinge";
-      data["in"].shuffle = false;
-      data["in"].reverse = false;
-      data["in"].sync = false;
-      data["out"].shuffle = true;
-      data["out"].reverse = false;
-      data["out"].sync = false;
-      return data;
-    };
-    
-    setTimeout(function () {
-        $('.fade').addClass('in');
-    }, 250);
-    /*
-    setTimeout(function () {
-      $('h1.glow').removeClass('in');
-    }, 2000);
-    */
-    var $tlt = $viewport.find('.tlt')
-      .on('start.tlt', null)
-      .on('inAnimationBegin.tlt', null)
-      .on('inAnimationEnd.tlt', null)
-      .on('outAnimationBegin.tlt', null)
-      .on('outAnimationEnd.tlt', null)
-      .on('end.tlt', null);
-    
-    $form.on('change', function () {
-      var obj = getFormData();
-      $tlt.textillate(obj);
-    }).trigger('change');
+        setTimeout(function() {
+            $('.fade').addClass('in');
+        }, 250);
 
-  });
+        var $tlt = $viewport.find('.tlt').on('start.tlt', null).on('inAnimationBegin.tlt', null).on('inAnimationEnd.tlt', null).on(
+                'outAnimationBegin.tlt', null).on('outAnimationEnd.tlt', null).on('end.tlt', null);
 
-    </script>
+        $form.on('change', function() {
+            var obj = getFormData();
+            $tlt.textillate(obj);
+        }).trigger('change');
+
+    });
+</script>
 </html>
