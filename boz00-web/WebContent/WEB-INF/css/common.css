@@ -4,36 +4,41 @@ body {
     font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 }
 
-.bs-docs-nav {
+.base-header-nav {
     margin-bottom: 0;
+    font-size: 18px;
 }
 
-.bs-docs-header {
+.base-body-header {
     color: #cdbfe3;
     background-color: #6f5499;
 }
 
-.bs-docs-header h1 {
+.base-body-header h1 {
     font-size: 35px;
     line-height: 1;
     color: #fff;
 }
 
-.bs-docs-header p {
+.base-body-header p {
     font-size: 18px;
     font-weight: 300;
     line-height: 1.4;
 }
 
-.bs-docs-footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin-top: 100px;
+.base-footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 50px;
     color: #767676;
     text-align: center;
     border-top: 1px solid #e5e5e5;
 }
 
-.bs-docs-footer p {
+.base-footer p {
     margin-bottom: 0;
+}
+
+.base-body-content {
+    height: 600px;   
 }
