@@ -219,7 +219,7 @@ function createInstructions() {
 
 	text = document.createElement( 'div' );
 	text.onSelectStart = null;
-	text.innerHTML = '<span style="color:' + theme[0] + ';font-size:26px;">玩法介绍：</span><br /><span style="font-size:15px;"><br />1. 随意拖动圆球；<br />2.点击页面背景；<br />3. 晃动浏览器；<br />4. 双击页面背景；<br />5. 按住鼠标左键。<br /><a href="home">Enter Boz\'s Page</a></span>';
+	text.innerHTML = '<span style="color:' + theme[0] + ';font-size:26px;">玩法介绍：</span><br /><span style="font-size:15px;"><br />1. 随意拖动圆球；<br />2.点击页面背景；<br />3. 晃动浏览器；<br />4. 双击页面背景；<br />5. 按住鼠标左键。<br /><a href="home">Boz博客</a></span>';
 	text.style.color = theme[1];
 	text.style.position = 'absolute';
 	text.style.left = '0px';

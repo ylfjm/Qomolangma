@@ -26,4 +26,14 @@ public class PageController {
     public String showMain() {
         return "home";
     }
+
+    @RequestMapping("/aboutme")
+    public String showAboutMe() {
+        return "aboutme";
+    }
+
+    @RequestMapping("/msgboard")
+    public String showMsgBoard() {
+        return "msgboard";
+    }
 }

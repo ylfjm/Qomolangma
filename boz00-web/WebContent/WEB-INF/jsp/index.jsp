@@ -21,9 +21,10 @@ body {
 <body>
     <div class="container fade in">
         <div class="viewport">
-            <div class="tlt" style="margin-top: 50px; font-size: 18px;">
+            <div class="tlt text-center" style="margin-top: 50px; font-size: 18px;">
                 <ul class="texts">
-                    <li>温馨提示：为保证最佳的效果，请在 IE10+、Chrome、Firefox 和 Safari 等现代浏览器中浏览。</li>
+                    <li>温馨提示：为保证最佳的效果，请在IE10+、Chrome、Firefox和Safari等现代浏览器中浏览。</li>
+                    <li>点击球上的链接进入博客</li>
                 </ul>
             </div>
             <form class="form"></form>

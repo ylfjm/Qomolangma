@@ -2,9 +2,17 @@
 
 body {
     font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    background-color: #F5F5F5;
 }
 
-.base-header-nav {
+@media ( min-width : 1200px) {
+    .container {
+        width: 1000px;
+    }
+}
+
+.base-nav {
+    padding-top: 15px;
     margin-bottom: 0;
     font-size: 18px;
 }
@@ -26,6 +34,10 @@ body {
     line-height: 1.4;
 }
 
+.base-body-content {
+    height: 600px;
+}
+
 .base-footer {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -37,8 +49,4 @@ body {
 
 .base-footer p {
     margin-bottom: 0;
-}
-
-.base-body-content {
-    height: 600px;   
 }

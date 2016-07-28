@@ -8,6 +8,6 @@
 </div>
 <div class="base-body-content">
     <div class="container">
-        <h1>首页精彩内容即将呈现。。。</h1>
+        <h1>关于我。。。</h1>
     </div>
 </div>
