@@ -6,7 +6,7 @@
         </div>
         <div class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
-                <li><a href="home">首页</a></li>
+                <li><a href="main">首页</a></li>
                 <li><a href="aboutme">关于我</a></li>
                 <li><a href="#">经典语录</a></li>
                 <li><a href="#">学海无涯</a></li>
