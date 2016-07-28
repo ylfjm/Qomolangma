@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<title>HOME</title>
+<title>BOZ的个人博客</title>
 <div class="base-main-top">
     <div class="container">
         <h1>BOZ的博客</h1>
