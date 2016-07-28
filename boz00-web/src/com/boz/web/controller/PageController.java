@@ -22,9 +22,9 @@ public class PageController {
         return "index";
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("/main")
     public String showMain() {
-        return "home";
+        return "main";
     }
 
     @RequestMapping("/aboutme")

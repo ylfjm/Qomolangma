@@ -17,24 +17,24 @@ body {
     font-size: 18px;
 }
 
-.base-body-header {
+.base-main-top {
     color: #cdbfe3;
     background-color: #6f5499;
 }
 
-.base-body-header h1 {
+.base-main-top h1 {
     font-size: 35px;
     line-height: 1;
     color: #fff;
 }
 
-.base-body-header p {
+.base-main-top p {
     font-size: 18px;
     font-weight: 300;
     line-height: 1.4;
 }
 
-.base-body-content {
+.base-main-content {
     height: 600px;
 }
 

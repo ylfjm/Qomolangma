@@ -3,7 +3,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Welcome to boz's page.</title>
 <link type="text/css" rel="stylesheet" href="css/textillate/animate.css">
 <link type="text/css" rel="stylesheet" href="css/textillate/style.css">

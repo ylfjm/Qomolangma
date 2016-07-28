@@ -21,8 +21,8 @@
     <definition name="index" extends="none">
         <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
     </definition>
-    <definition name="home" extends="general">
-        <put-attribute name="body" value="/WEB-INF/jsp/home.jsp" />
+    <definition name="main" extends="general">
+        <put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
     </definition>
     <definition name="aboutme" extends="general">
         <put-attribute name="body" value="/WEB-INF/jsp/aboutme.jsp" />
