@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<header class="navbar navbar-static-top base-nav">
+<div class="navbar navbar-static-top base-nav">
     <div class="container">
         <div class="navbar-left">
             <a href="home"><img alt="" src="image/bozlogo.png"></a>
@@ -14,4 +14,4 @@
             </ul>
         </div>
     </div>
-</header>
+</div>
