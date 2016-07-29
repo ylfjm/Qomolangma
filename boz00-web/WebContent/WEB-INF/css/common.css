@@ -4,11 +4,12 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Microsoft Yahei,
 		Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 	background-color: #F5F5F5;
+	/* background: url(../image/csdn_bg.jpg); */
 }
 
 @media ( min-width : 1200px) {
 	.container {
-		width: 1000px;
+		width: 950px;
 	}
 }
 
@@ -19,25 +20,23 @@ body {
 }
 
 .base-main-top {
-	height: 150px;
-	color: #cdbfe3;
-	background-color: #6f5499;
+	height: 230px;
+	/* background-color: #6f5499; */
+	background: url(../image/boy.jpg) center;
 }
 
 .base-main-top h1 {
 	font-size: 35px;
-	line-height: 1;
 	color: #fff;
 }
 
 .base-main-top p {
 	font-size: 18px;
-	font-weight: 300;
-	line-height: 1.4;
+	color: #cdbfe3;
 }
 
 .base-main-content {
-	height: 600px;
+    height: 1000px;
 }
 
 .base-footer {

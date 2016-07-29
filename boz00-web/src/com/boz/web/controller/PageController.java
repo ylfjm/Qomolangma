@@ -32,6 +32,11 @@ public class PageController {
         return "aboutme";
     }
 
+    @RequestMapping("/study")
+    public String showStudy() {
+        return "study";
+    }
+
     @RequestMapping("/msgboard")
     public String showMsgBoard() {
         return "msgboard";

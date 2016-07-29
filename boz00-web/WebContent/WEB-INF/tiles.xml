@@ -27,6 +27,9 @@
     <definition name="aboutme" extends="general">
         <put-attribute name="body" value="/WEB-INF/jsp/aboutme.jsp" />
     </definition>
+    <definition name="study" extends="general">
+        <put-attribute name="body" value="/WEB-INF/jsp/study.jsp" />
+    </definition>
     <definition name="msgboard" extends="general">
         <put-attribute name="body" value="/WEB-INF/jsp/msgboard.jsp" />
     </definition>
