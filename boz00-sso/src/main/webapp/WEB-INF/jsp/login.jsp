@@ -12,9 +12,94 @@
 </head>
 <body>
     <div class="container">
-        <div class="pagelet-container">
-            
+        <div class="page-container">
+            <div class="page-box">
+                <div class="page-box-inner">
+                    <form id="loginForm" method="post" onsubmit="return false;">
+                        <h1>登录</h1>
+                        <div class="page-box-row">
+                            <label for="ap_username">用户名或手机号或邮箱</label> <input type="text" maxlength="50" id="ap_username" name="userName"
+                                class="form-control" tabindex="1" autoComplete="off">
+                            <div id="username_warning" class="page-box-warning">
+                                <i class="page-box-warning-icon"></i>
+                                <div id="username_warning_content" class="page-box-warning-content"></div>
+                            </div>
+                        </div>
+                        <div class="page-box-row">
+                            <label for="ap_password">密码</label> <input type="password" maxlength="1024" id="ap_password" name="password"
+                                class="form-control" tabindex="2">
+                            <div id="password_warning" class="page-box-warning">
+                                <i class="page-box-warning-icon"></i>
+                                <div id="password_warning_content" class="page-box-warning-content"></div>
+                            </div>
+                        </div>
+                        <div class="page-box-row">
+                            <input type="button" id="ap_login_submit" class="btn btn-primary btn-block page-box-submit" value="登录" tabindex="3"
+                                onclick="LOGIN.login();">
+                        </div>
+                        <div class="page-box-row">
+                            <div class="page-box-divider"></div>
+                        </div>
+                        <div class="page-box-row">
+                            <span>还没有账户？</span><a href="/page/register">免费注册</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+    <script type="text/javascript">
+                    $(function() {
+                        $("#ap_username").keyup(function() {
+                            $("#username_warning").hide();
+                        });
+                        $("#ap_password").keyup(function() {
+                            $("#password_warning").hide();
+                        });
+                    });
+                    var redirectUrl = "${redirect}";
+                    var LOGIN = {
+                        checkInput : function() {
+                            var checkResult = true;
+                            //$("#username_warning").hide();
+                            //$("#password_warning").hide();
+                            //不能为空检查
+                            if ($("#ap_username").val() == "") {
+                                $("#username_warning_content").text("用户名不能为空");
+                                $("#username_warning").show();
+                                $("#ap_username").focus();
+                                checkResult = false;
+                            }
+                            if ($("#ap_password").val() == "") {
+                                $("#password_warning_content").text("密码不能为空");
+                                $("#password_warning").show();
+                                $("#ap_password").focus();
+                                checkResult = false;
+                            }
+                            return checkResult;
+                        },
+                        doLogin : function() {
+                            $.post("/user/login", $("#loginForm").serialize(), function(data) {
+                                if (data.status == 200) {
+                                    //alert("登录成功！");
+                                    if (redirectUrl == "") {
+                                        location.href = "http://localhost:8082";
+                                    } else {
+                                        location.href = redirectUrl;
+                                    }
+                                } else {
+                                    //alert("登录失败，原因是：" + data.msg);
+                                    $("#ap_username").select();
+                                }
+                            });
+                        },
+                        login : function() {
+                            if (this.checkInput()) {
+                                this.doLogin();
+                            }
+                        }
+
+                    };
+                </script>
 </body>
 </html>
