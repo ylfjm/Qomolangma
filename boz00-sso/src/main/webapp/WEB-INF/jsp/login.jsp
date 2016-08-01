@@ -7,8 +7,14 @@
 <link type="text/css" rel="stylesheet" href="css/common.css">
 <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
+
+<title>登录</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="pagelet-container">
+            
+        </div>
+    </div>
 </body>
 </html>
