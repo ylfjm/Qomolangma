@@ -69,7 +69,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
         userMapper.insert(user);
         return CommonResult.ok();
-
     }
 
     @Override
@@ -77,12 +76,12 @@ public class UserServiceImpl implements UserService {
         BozTUserExample example = new BozTUserExample();
         Criteria criteria = example.createCriteria();
         criteria.andUsernameEqualTo(username);
-        List<BozTUser> list = userMapper.selectByExample(example);
+        List<BozTUser> userList = userMapper.selectByExample(example);
         // 如果没有此用户名
-        if (null == list || list.size() == 0) {
+        if (null == userList || CollectionUtils.isEmpty(userList)) {
             return CommonResult.build(400, "用户名或密码错误");
         }
-        BozTUser user = list.get(0);
+        BozTUser user = userList.get(0);
         // 比对密码
         if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
             return CommonResult.build(400, "用户名或密码错误");
