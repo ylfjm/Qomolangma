@@ -10,4 +10,9 @@
 
 	<!-- 扫描包加载Service实现类 -->
 	<context:component-scan base-package="com.boz.service"></context:component-scan>
+	<!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:*.properties" />
+	<import resource="applicationContext-dao.xml"/>
+	<import resource="applicationContext-redis.xml"/>
+	<import resource="applicationContext-trans.xml"/>
 </beans>
