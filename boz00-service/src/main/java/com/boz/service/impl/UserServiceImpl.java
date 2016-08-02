@@ -1,7 +1,7 @@
 /*
  * Creation : 2016年8月2日
  */
-package com.boz.service;
+package com.boz.service.impl;
 
 import java.util.Date;
 import java.util.List;
@@ -21,6 +21,7 @@ import com.boz.mapper.BozTUserMapper;
 import com.boz.pojo.BozTUser;
 import com.boz.pojo.BozTUserExample;
 import com.boz.pojo.BozTUserExample.Criteria;
+import com.boz.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
