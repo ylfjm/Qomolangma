@@ -18,7 +18,7 @@
                     <form id="loginForm" method="post" onsubmit="return false;">
                         <h1>登录</h1>
                         <div class="page-box-row">
-                            <label for="ap_username">用户名或手机号或邮箱</label> <input type="text" maxlength="50" id="ap_username" name="userName"
+                            <label for="ap_username">用户名或手机号或邮箱</label> <input type="text" maxlength="50" id="ap_username" name="username"
                                 class="form-control" tabindex="1" autoComplete="off">
                             <div id="username_warning" class="page-box-warning">
                                 <i class="page-box-warning-icon"></i>

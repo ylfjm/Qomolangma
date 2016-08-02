@@ -18,7 +18,7 @@
                     <form id="registerForm" method="post" onsubmit="return false;">
                         <h1>创建账户</h1>
                         <div class="page-box-row">
-                            <label for="ap_username">用户名</label> <input type="text" maxlength="50" id="ap_username" name="userName"
+                            <label for="ap_username">用户名</label> <input type="text" maxlength="50" id="ap_username" name="username"
                                 class="form-control" tabindex="1" autoComplete="off">
                             <div id="username_warning" class="page-box-warning">
                                 <i class="page-box-warning-icon"></i>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="page-box-row">
-                            <label for="ap_phone_number">手机号码</label> <input type="text" maxlength="14" id="ap_phone_number" name="phoneNumber"
+                            <label for="ap_phone_number">手机号码</label> <input type="text" maxlength="14" id="ap_phone_number" name="phone"
                                 class="form-control" tabindex="2">
                             <div id="phone_number_warning" class="page-box-warning">
                                 <i class="page-box-warning-icon"></i>
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="page-box-row">
-                            <label for="ap_mail_address">邮箱地址</label> <input type="email" maxlength="64" id="ap_mail_address" name="mailAddress"
+                            <label for="ap_mail_address">邮箱地址</label> <input type="email" maxlength="64" id="ap_mail_address" name="email"
                                 class="form-control" tabindex="3">
                             <div id="mail_address_warning" class="page-box-warning">
                                 <i class="page-box-warning-icon"></i>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="page-box-row">
                             <label for="ap_password_check">再次输入密码</label> <input type="password" maxlength="1024" id="ap_password_check"
-                                name="passwordCheck" class="form-control" tabindex="5">
+                                class="form-control" tabindex="5">
                             <div id="password_check_warning" class="page-box-warning">
                                 <i class="page-box-warning-icon"></i>
                                 <div id="password_check_warning_content" class="page-box-warning-content"></div>
