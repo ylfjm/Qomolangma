@@ -5,22 +5,21 @@ package com.boz.dao.redis;
 
 /**
  * @author bo
- *
  */
 public interface JedisClient {
 
-	String get(String key);
+    String get(String key);
 
-	String set(String key, String value);
+    String set(String key, String value);
 
-	String hget(String hkey, String key);
+    String hget(String hkey, String key);
 
-	long hset(String hkey, String key, String value);
+    long hset(String hkey, String key, String value);
 
-	long incr(String key);
+    long incr(String key);
 
-	long expire(String key, int second);
+    long expire(String key, int second);
 
-	long ttl(String key);
+    long ttl(String key);
 
 }

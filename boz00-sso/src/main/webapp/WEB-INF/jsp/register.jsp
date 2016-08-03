@@ -12,6 +12,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="page-logo">
+            <img alt="" src="images/bozlogo.png">
+        </div>
         <div class="page-container" id="reg_resp_err">
             <div class="page-box">
                 <div class="page-box-inner">
@@ -74,7 +77,7 @@
                             <div class="page-box-divider"></div>
                         </div>
                         <div class="page-box-row">
-                            <span>已有账户？</span><a href="/page/login">登录</a>
+                            <span>已有账户？&nbsp;</span><a href="/page/login">登录</a>
                         </div>
                     </form>
                 </div>

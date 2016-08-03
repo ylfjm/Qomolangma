@@ -6,6 +6,9 @@
  */
 package com.boz.sso.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -80,9 +83,9 @@ public class UserController {
 
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult userLogin(String username, String password) {
+    public CommonResult userLogin(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         try {
-            return userService.userLogin(username, password);
+            return userService.userLogin(username, password, request, response);
         } catch (Exception e) {
             return CommonResult.build(500, ExceptionUtil.getStackTrace(e));
         }

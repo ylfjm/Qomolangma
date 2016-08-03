@@ -14,9 +14,15 @@ body {
     /* background: url(../image/csdn_bg.jpg); */
 }
 
+.page-logo {
+    width: 350px;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
+
 .page-container {
     width: 350px;
-    margin: 30px auto 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 .page-box {

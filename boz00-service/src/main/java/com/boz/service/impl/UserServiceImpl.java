@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +18,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
 import com.boz.common.utils.CommonResult;
+import com.boz.common.utils.CookieUtils;
 import com.boz.common.utils.JsonUtils;
 import com.boz.dao.mapper.BozTUserMapper;
 import com.boz.dao.redis.JedisClient;
@@ -37,6 +41,9 @@ public class UserServiceImpl implements UserService {
 
     @Value("${SSO_SESSION_EXPIRE}")
     private int SSO_SESSION_EXPIRE;
+
+    @Value("${COOKIE_NAME}")
+    private String COOKIE_NAME;
 
     @Override
     public CommonResult checkData(String content, Integer type) {
@@ -73,7 +80,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public CommonResult userLogin(String username, String password) {
+    public CommonResult userLogin(String username, String password, HttpServletRequest request, HttpServletResponse response) {
         BozTUserExample example = new BozTUserExample();
         Criteria criteria = example.createCriteria();
         criteria.andUsernameEqualTo(username);
@@ -87,14 +94,25 @@ public class UserServiceImpl implements UserService {
         if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
             return CommonResult.build(400, "用户名或密码错误");
         }
+        // 判断用户是否已经是登录状态。
+        String token = jedisClient.get(user.getUsername());
+        if (StringUtils.isNotBlank(token)) {
+            jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, "FORCED_EXIT");
+        }
         // 生成token
-        String token = UUID.randomUUID().toString();
+        token = UUID.randomUUID().toString();
         // 保存用户之前，把用户对象中的密码清空。
         user.setPassword(null);
         // 把用户信息写入redis
         jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, JsonUtils.objectToJson(user));
+        // 用户异地登录判断依据
+        jedisClient.set(user.getUsername(), token);
         // 设置session的过期时间
         jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
+        jedisClient.expire(user.getUsername(), SSO_SESSION_EXPIRE);
+
+        // 添加cookie的逻辑，cookie的有效期是关闭浏览器失效
+        CookieUtils.setCookie(request, response, COOKIE_NAME, token);
         // 返回token
         return CommonResult.ok(token);
     }
@@ -106,11 +124,16 @@ public class UserServiceImpl implements UserService {
         // 判断是否为空
         if (StringUtils.isBlank(json)) {
             return CommonResult.build(400, "此session已经过期，请重新登录");
+        } else if ("FORCED_EXIT".equals(json)) {
+            jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, 0);
+            return CommonResult.build(400, "您已经在别处登录，请重新登录");
         }
+        BozTUser user = JsonUtils.jsonToPojo(json, BozTUser.class);
         // 更新过期时间
         jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
+        jedisClient.expire(user.getUsername(), SSO_SESSION_EXPIRE);
         // 返回用户信息
-        return CommonResult.ok(JsonUtils.jsonToPojo(json, BozTUser.class));
+        return CommonResult.ok(user);
 
     }
 

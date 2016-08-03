@@ -8,6 +8,7 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="css/common.css">
 <script type="text/javascript" src="js/jquery/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
 </head>
 <body>

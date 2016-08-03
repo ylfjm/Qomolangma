@@ -3,6 +3,9 @@
  */
 package com.boz.service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.boz.common.utils.CommonResult;
 import com.boz.pojo.BozTUser;
 
@@ -12,7 +15,7 @@ public interface UserService {
 
     CommonResult createUser(BozTUser user);
 
-    CommonResult userLogin(String username, String password);
+    CommonResult userLogin(String username, String password, HttpServletRequest request, HttpServletResponse response);
 
     CommonResult getUserByToken(String token);
 
