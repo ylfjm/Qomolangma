@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Microsoft Yahei,
+		Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+	background-color: #F5F5F5;
+	/* background: url(../images/csdn_bg.jpg); */
+}
+
+@media ( min-width : 1200px) {
+	.container {
+		width: 950px;
+	}
+}
+
+.base-nav {
+	padding-top: 15px;
+	margin-bottom: 0;
+	font-size: 18px;
+}
+
+.base-main-top {
+	height: 230px;
+	/* background-color: #6f5499; */
+	background: url(../images/boy.jpg) center;
+}
+
+.base-main-top h1 {
+	font-size: 35px;
+	color: #fff;
+}
+
+.base-main-top p {
+	font-size: 18px;
+	color: #cdbfe3;
+}
+
+.base-main-content {
+    height: 1000px;
+}
+
+.base-footer {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-top: 50px;
+	color: #767676;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
+
+.base-footer p {
+	margin-bottom: 0;
+}
