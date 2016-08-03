@@ -26,4 +26,9 @@ public class PageController {
     public String register() {
         return "register";
     }
+
+    @RequestMapping("/page/regSuccess")
+    public String registerSuccess() {
+        return "regSuccess";
+    }
 }

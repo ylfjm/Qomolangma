@@ -16,8 +16,8 @@ import org.springframework.util.DigestUtils;
 
 import com.boz.common.utils.CommonResult;
 import com.boz.common.utils.JsonUtils;
+import com.boz.dao.mapper.BozTUserMapper;
 import com.boz.dao.redis.JedisClient;
-import com.boz.mapper.BozTUserMapper;
 import com.boz.pojo.BozTUser;
 import com.boz.pojo.BozTUserExample;
 import com.boz.pojo.BozTUserExample.Criteria;

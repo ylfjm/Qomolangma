@@ -12,6 +12,15 @@
 </head>
 <body>
     <div class="container">
+        <div class="page-container" id="reg_resp_err">
+            <div class="page-box">
+                <div class="page-box-inner">
+                    <i class="page-box-error-icon"></i>
+                    <h4>出现了一个问题</h4>
+                    <div id="reg_resp_err_content" class="page-box-error-content"></div>
+                </div>
+            </div>
+        </div>
         <div class="page-container">
             <div class="page-box">
                 <div class="page-box-inner">
@@ -49,57 +58,56 @@
         </div>
     </div>
     <script type="text/javascript">
-                    $(function() {
-                        $("#ap_username").keyup(function() {
-                            $("#username_warning").hide();
-                        });
-                        $("#ap_password").keyup(function() {
-                            $("#password_warning").hide();
-                        });
-                    });
-                    var redirectUrl = "${redirect}";
-                    var LOGIN = {
-                        checkInput : function() {
-                            var checkResult = true;
-                            //$("#username_warning").hide();
-                            //$("#password_warning").hide();
-                            //不能为空检查
-                            if ($("#ap_username").val() == "") {
-                                $("#username_warning_content").text("用户名不能为空");
-                                $("#username_warning").show();
-                                $("#ap_username").focus();
-                                checkResult = false;
-                            }
-                            if ($("#ap_password").val() == "") {
-                                $("#password_warning_content").text("密码不能为空");
-                                $("#password_warning").show();
-                                $("#ap_password").focus();
-                                checkResult = false;
-                            }
-                            return checkResult;
-                        },
-                        doLogin : function() {
-                            $.post("/user/login", $("#loginForm").serialize(), function(data) {
-                                if (data.status == 200) {
-                                    //alert("登录成功！");
-                                    if (redirectUrl == "") {
-                                        location.href = "http://localhost:8082";
-                                    } else {
-                                        location.href = redirectUrl;
-                                    }
-                                } else {
-                                    //alert("登录失败，原因是：" + data.msg);
-                                    $("#ap_username").select();
-                                }
-                            });
-                        },
-                        login : function() {
-                            if (this.checkInput()) {
-                                this.doLogin();
-                            }
+        $(function() {
+            $("#ap_username").keyup(function() {
+                $("#username_warning").hide();
+            });
+            $("#ap_password").keyup(function() {
+                $("#password_warning").hide();
+            });
+        });
+        var redirectUrl = "${redirect}";
+        var LOGIN = {
+            checkInput : function() {
+                var checkResult = true;
+                //$("#username_warning").hide();
+                //$("#password_warning").hide();
+                //不能为空检查
+                if ($("#ap_username").val() == "") {
+                    $("#username_warning_content").text("用户名不能为空");
+                    $("#username_warning").show();
+                    $("#ap_username").focus();
+                    checkResult = false;
+                }
+                if ($("#ap_password").val() == "") {
+                    $("#password_warning_content").text("密码不能为空");
+                    $("#password_warning").show();
+                    $("#ap_password").focus();
+                    checkResult = false;
+                }
+                return checkResult;
+            },
+            doLogin : function() {
+                $.post("/user/login", $("#loginForm").serialize(), function(data) {
+                    if (data.status == 200) {
+                        if (redirectUrl == "") {
+                            location.href = "http://localhost:8082";
+                        } else {
+                            location.href = redirectUrl;
                         }
-
-                    };
-                </script>
+                    } else {
+                        $("#reg_resp_err_content").text("登录失败，原因是：" + data.msg);
+                        $("#reg_resp_err").show();
+                        $("#ap_username").select();
+                    }
+                });
+            },
+            login : function() {
+                if (this.checkInput()) {
+                    this.doLogin();
+                }
+            }
+        };
+    </script>
 </body>
 </html>

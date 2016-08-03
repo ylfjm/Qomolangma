@@ -84,3 +84,56 @@ body {
     font-size: 12px;
     line-height: 18px;
 }
+
+.page-box-error-icon {
+    height: 27px;
+    width: 30px;
+    position: absolute;
+    left: 18px;
+    top: 15px;
+    display: inline-block;
+    vertical-align: top;
+    background-image: url(../images/Boz_UIBaseCSS.png);
+    background-position: -248px -35px;
+    background-size: 400px 650px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+}
+.page-box-inner h4 {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.2;
+    margin-left: 50px;
+    margin-top: 0;
+    margin-bottom: 4px;
+    color: #c40000;
+    
+}
+
+.page-box-error-content {
+    margin-left: 50px;
+}
+
+#reg_resp_err {
+    display: none;
+}
+
+.page-box-success-icon {
+    height: 27px;
+    width: 30px;
+    position: absolute;
+    left: 18px;
+    top: 11px;
+    display: inline-block;
+    vertical-align: top;
+    background-image: url(../images/Boz_UIBaseCSS.png);
+    background-position: -315px -35px;
+    background-size: 400px 650px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+}
+
+.page-box-success-content {
+    font-size: 15px;
+    text-align: center;
+}

@@ -12,6 +12,15 @@
 </head>
 <body>
     <div class="container">
+        <div class="page-container" id="reg_resp_err">
+            <div class="page-box">
+                <div class="page-box-inner">
+                    <i class="page-box-error-icon"></i>
+                    <h4>出现了一个问题</h4>
+                    <div id="reg_resp_err_content" class="page-box-error-content"></div>
+                </div>
+            </div>
+        </div>
         <div class="page-container">
             <div class="page-box">
                 <div class="page-box-inner">
@@ -73,116 +82,121 @@
         </div>
     </div>
     <script type="text/javascript">
-                    $(function() {
-                        $("#ap_username").keyup(function() {
-                            $("#username_warning").hide();
-                        });
-                        $("#ap_phone_number").keyup(function() {
-                            $("#phone_number_warning").hide();
-                        });
-                        $("#ap_mail_address").keyup(function() {
-                            $("#mail_address_warning").hide();
-                        });
-                        $("#ap_password").keyup(function() {
-                            $("#password_warning").hide();
-                        });
-                        $("#ap_password_check").keyup(function() {
-                            $("#password_check_warning").hide();
-                        });
-                    });
-                    var REGISTER = {
-                        param : {
-                            //单点登录系统的url
-                            surl : ""
-                        },
-                        inputcheck : function() {
-                            var checkResult = true;
-                            //$("#username_warning").hide();
-                            //$("#phone_number_warning").hide();
-                            //$("#mail_address_warning").hide();
-                            //$("#password_warning").hide();
-                            //$("#password_check_warning").hide();
-                            //不能为空检查
-                            if ($("#ap_username").val() == "") {
-                                $("#username_warning_content").text("用户名不能为空");
-                                $("#username_warning").show();
-                                $("#ap_username").focus();
-                                checkResult = false;
-                            }
-                            if ($("#ap_phone_number").val() == "") {
-                                $("#phone_number_warning_content").text("手机号不能为空");
-                                $("#phone_number_warning").show();
-                                $("#ap_phone_number").focus();
-                                checkResult = false;
-                            }
-                            if ($("#ap_mail_address").val() == "") {
-                                $("#mail_address_warning_content").text("邮箱地址不能为空");
-                                $("#mail_address_warning").show();
-                                $("#ap_mail_address").focus();
-                                checkResult = false;
-                            }
-                            if ($("#ap_password").val() == "") {
-                                $("#password_warning_content").text("密码不能为空");
-                                $("#password_warning").show();
-                                $("#ap_password").focus();
-                                checkResult = false;
-                            }
-                            //密码检查
-                            if ($("#ap_password").val() != $("#ap_password_check").val()) {
-                                $("#password_check_warning_content").text("确认密码和密码不一致，请重新输入！");
-                                $("#password_check_warning").show();
-                                $("#ap_password_check").select();
-                                $("#ap_password_check").focus();
-                                checkResult = false;
-                            }
-                            return checkResult;
-                        },
-                        beforeSubmit : function() {
-                            //检查用户是否已经被占用
+        $(function() {
+            $("#ap_username").keyup(function() {
+                $("#username_warning").hide();
+            });
+            $("#ap_phone_number").keyup(function() {
+                $("#phone_number_warning").hide();
+            });
+            $("#ap_mail_address").keyup(function() {
+                $("#mail_address_warning").hide();
+            });
+            $("#ap_password").keyup(function() {
+                $("#password_warning").hide();
+            });
+            $("#ap_password_check").keyup(function() {
+                $("#password_check_warning").hide();
+            });
+        });
+        var REGISTER = {
+            param : {
+                //单点登录系统的url
+                surl : ""
+            },
+            inputcheck : function() {
+                var checkResult = true;
+                //$("#username_warning").hide();
+                //$("#phone_number_warning").hide();
+                //$("#mail_address_warning").hide();
+                //$("#password_warning").hide();
+                //$("#password_check_warning").hide();
+                //不能为空检查
+                if ($("#ap_username").val() == "") {
+                    $("#username_warning_content").text("用户名不能为空");
+                    $("#username_warning").show();
+                    $("#ap_username").focus();
+                    checkResult = false;
+                }
+                if ($("#ap_phone_number").val() == "") {
+                    $("#phone_number_warning_content").text("手机号不能为空");
+                    $("#phone_number_warning").show();
+                    $("#ap_phone_number").focus();
+                    checkResult = false;
+                }
+                if ($("#ap_mail_address").val() == "") {
+                    $("#mail_address_warning_content").text("邮箱地址不能为空");
+                    $("#mail_address_warning").show();
+                    $("#ap_mail_address").focus();
+                    checkResult = false;
+                }
+                if ($("#ap_password").val() == "") {
+                    $("#password_warning_content").text("密码不能为空");
+                    $("#password_warning").show();
+                    $("#ap_password").focus();
+                    checkResult = false;
+                }
+                //密码检查
+                if ($("#ap_password").val() != $("#ap_password_check").val()) {
+                    $("#password_check_warning_content").text("确认密码和密码不一致，请重新输入！");
+                    $("#password_check_warning").show();
+                    $("#ap_password_check").select();
+                    $("#ap_password_check").focus();
+                    checkResult = false;
+                }
+                return checkResult;
+            },
+            beforeSubmit : function() {
+                //检查用户是否已经被占用
+                $("#reg_resp_err").hide();
+                $.ajax({
+                    url : REGISTER.param.surl + "/user/check/" + escape($("#ap_username").val()) + "/1?r=" + Math.random(),
+                    success : function(data) {
+                        if (data.data) {
+                            //检查手机号是否存在
                             $.ajax({
-                                url : REGISTER.param.surl + "/user/check/" + escape($("#ap_username").val()) + "/1?r=" + Math.random(),
+                                url : REGISTER.param.surl + "/user/check/" + $("#ap_phone_number").val() + "/2?r=" + Math.random(),
                                 success : function(data) {
                                     if (data.data) {
-                                        //检查手机号是否存在
-                                        $.ajax({
-                                            url : REGISTER.param.surl + "/user/check/" + $("#ap_phone_number").val() + "/2?r=" + Math.random(),
-                                            success : function(data) {
-                                                if (data.data) {
-                                                    REGISTER.doSubmit();
-                                                } else {
-                                                    //alert("此手机号已经被注册！");
-                                                    $("#ap_phone_number").select();
-                                                }
-                                            }
-                                        });
+                                        REGISTER.doSubmit();
                                     } else {
-                                        //alert("此用户名已经被占用，请选择其他用户名");
-                                        $("#ap_username").select();
+                                        $("#reg_resp_err_content").text("此手机号已经被注册！");
+                                        $("#reg_resp_err").show();
+                                        $("#ap_phone_number").select();
                                     }
                                 }
                             });
-
-                        },
-                        doSubmit : function() {
-                            $.post("/user/register", $("#registerForm").serialize(), function(data) {
-                                if (data.status == 200) {
-                                    //alert('用户注册成功，请登录！');
-                                    REGISTER.login();
-                                } else {
-                                    //alert("注册失败！");
-                                }
-                            });
-                        },
-                        login : function() {
-                            location.href = "/page/login";
-                            return false;
-                        },
-                        reg : function() {
-                            if (this.inputcheck()) {
-                                this.beforeSubmit();
-                            }
+                        } else {
+                            $("#reg_resp_err_content").text("此用户名已经被占用，请选择其他用户名");
+                            $("#reg_resp_err").show();
+                            $("#ap_username").select();
                         }
-                    };
-                </script>
+                    }
+                });
+
+            },
+            doSubmit : function() {
+                $.post("/user/register", $("#registerForm").serialize(), function(data) {
+                    if (data.status == 200) {
+                        //alert('用户注册成功，请登录！');
+                        REGISTER.regSuccess();
+                    } else {
+                        $("#reg_resp_err_content").text("注册失败！");
+                        $("#reg_resp_err").show();
+                    }
+                });
+            },
+            regSuccess : function() {
+                alert(1);
+                location.href = "/page/regSuccess";
+                return false;
+            },
+            reg : function() {
+                if (this.inputcheck()) {
+                    this.beforeSubmit();
+                }
+            }
+        };
+    </script>
 </body>
 </html>

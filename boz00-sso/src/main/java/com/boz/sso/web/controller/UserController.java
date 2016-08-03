@@ -69,6 +69,7 @@ public class UserController {
     }
 
     @RequestMapping("/user/register")
+    @ResponseBody
     public CommonResult createUser(BozTUser user) {
         try {
             return userService.createUser(user);
