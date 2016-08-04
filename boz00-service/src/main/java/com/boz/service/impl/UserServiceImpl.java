@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
+import com.boz.common.constants.Constants;
 import com.boz.common.utils.CommonResult;
 import com.boz.common.utils.CookieUtils;
 import com.boz.common.utils.JsonUtils;
@@ -36,14 +37,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private JedisClient jedisClient;
 
-    @Value("${REDIS_USER_SESSION_KEY}")
-    private String REDIS_USER_SESSION_KEY;
-
     @Value("${SSO_SESSION_EXPIRE}")
     private int SSO_SESSION_EXPIRE;
-
-    @Value("${COOKIE_NAME}")
-    private String COOKIE_NAME;
 
     @Override
     public CommonResult checkData(String content, Integer type) {
@@ -87,32 +82,33 @@ public class UserServiceImpl implements UserService {
         List<BozTUser> userList = userMapper.selectByExample(example);
         // 如果没有此用户名
         if (null == userList || CollectionUtils.isEmpty(userList)) {
-            return CommonResult.build(400, "用户名或密码错误");
+            return CommonResult.build(400, Constants.ERROR_MSG_USERNAMEORPASSWORDERROR);
         }
         BozTUser user = userList.get(0);
         // 比对密码
         if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
-            return CommonResult.build(400, "用户名或密码错误");
+            return CommonResult.build(400, Constants.ERROR_MSG_USERNAMEORPASSWORDERROR);
         }
         // 判断用户是否已经是登录状态。
         String token = jedisClient.get(user.getUsername());
         if (StringUtils.isNotBlank(token)) {
-            jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, "FORCED_EXIT");
+            jedisClient.set(Constants.REDIS_USER_SESSION_KEY + ":" + token, "FORCED_EXIT");
+            jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
         }
         // 生成token
         token = UUID.randomUUID().toString();
         // 保存用户之前，把用户对象中的密码清空。
         user.setPassword(null);
         // 把用户信息写入redis
-        jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, JsonUtils.objectToJson(user));
+        jedisClient.set(Constants.REDIS_USER_SESSION_KEY + ":" + token, JsonUtils.objectToJson(user));
         // 用户异地登录判断依据
         jedisClient.set(user.getUsername(), token);
         // 设置session的过期时间
-        jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
+        jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
         jedisClient.expire(user.getUsername(), SSO_SESSION_EXPIRE);
 
         // 添加cookie的逻辑，cookie的有效期是关闭浏览器失效
-        CookieUtils.setCookie(request, response, COOKIE_NAME, token);
+        CookieUtils.setCookie(request, response, Constants.COOKIE_NAME, token);
         // 返回token
         return CommonResult.ok(token);
     }
@@ -120,21 +116,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public CommonResult getUserByToken(String token) {
         // 根据token从redis中查询用户信息
-        String json = jedisClient.get(REDIS_USER_SESSION_KEY + ":" + token);
+        String json = jedisClient.get(Constants.REDIS_USER_SESSION_KEY + ":" + token);
         // 判断是否为空
         if (StringUtils.isBlank(json)) {
-            return CommonResult.build(400, "此session已经过期，请重新登录");
+            return CommonResult.build(400, Constants.ERROR_MSG_SESSIONTIMEOUT);
         } else if ("FORCED_EXIT".equals(json)) {
-            jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, 0);
-            return CommonResult.build(400, "您已经在别处登录，请重新登录");
+            jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, 0);
+            return CommonResult.build(400, Constants.ERROR_MSG_ACCOUNTALREADYLOGIN);
         }
         BozTUser user = JsonUtils.jsonToPojo(json, BozTUser.class);
         // 更新过期时间
-        jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
+        jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
         jedisClient.expire(user.getUsername(), SSO_SESSION_EXPIRE);
         // 返回用户信息
         return CommonResult.ok(user);
-
     }
 
 }

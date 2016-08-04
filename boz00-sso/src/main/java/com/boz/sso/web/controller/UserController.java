@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.boz.common.constants.Constants;
 import com.boz.common.utils.CommonResult;
 import com.boz.common.utils.ExceptionUtil;
 import com.boz.pojo.BozTUser;
@@ -40,13 +41,13 @@ public class UserController {
         CommonResult result = null;
         // 参数有效性校验
         if (StringUtils.isBlank(param)) {
-            result = CommonResult.build(400, "校验内容不能为空");
+            result = CommonResult.build(400, Constants.ERROR_MSG_CHECKCONTENTNULL);
         }
         if (type == null) {
-            result = CommonResult.build(400, "校验内容类型不能为空");
+            result = CommonResult.build(400, Constants.ERROR_MSG_CHECKTYPENULL);
         }
         if (type != 1 && type != 2 && type != 3) {
-            result = CommonResult.build(400, "校验内容类型错误");
+            result = CommonResult.build(400, Constants.ERROR_MSG_CHECKTYPEERROR);
         }
         // 校验出错
         if (null != result) {
