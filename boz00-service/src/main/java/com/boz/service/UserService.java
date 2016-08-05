@@ -19,4 +19,6 @@ public interface UserService {
 
     CommonResult getUserByToken(String token);
 
+    CommonResult userLogout(String token, HttpServletRequest request, HttpServletResponse response);
+
 }

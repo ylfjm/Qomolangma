@@ -108,6 +108,24 @@ public class UserController {
         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
         mappingJacksonValue.setJsonpFunction(callback);
         return mappingJacksonValue;
+    }
+
+    @RequestMapping("/user/logout/{token}")
+    @ResponseBody
+    public Object userLogout(@PathVariable String token, String callback, HttpServletRequest request, HttpServletResponse response) {
+        CommonResult result = null;
+        try {
+            result = userService.userLogout(token, request, response);
+        } catch (Exception e) {
+            result = CommonResult.build(500, ExceptionUtil.getStackTrace(e));
+        }
+        // 判断是否为jsonp调用
+        if (StringUtils.isBlank(callback)) {
+            return result;
+        }
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
+        mappingJacksonValue.setJsonpFunction(callback);
+        return mappingJacksonValue;
 
     }
 

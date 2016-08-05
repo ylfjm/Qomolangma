@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
         // 判断用户是否已经是登录状态。
         String token = jedisClient.get(user.getUsername());
         if (StringUtils.isNotBlank(token)) {
-            jedisClient.set(Constants.REDIS_USER_SESSION_KEY + ":" + token, "FORCED_EXIT");
+            jedisClient.set(Constants.REDIS_USER_SESSION_KEY + ":" + token, Constants.FORCED_EXIT);
             jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
         }
         // 生成token
@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
         // 判断是否为空
         if (StringUtils.isBlank(json)) {
             return CommonResult.build(400, Constants.ERROR_MSG_SESSIONTIMEOUT);
-        } else if ("FORCED_EXIT".equals(json)) {
+        } else if (Constants.FORCED_EXIT.equals(json)) {
             jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, 0);
             return CommonResult.build(400, Constants.ERROR_MSG_ACCOUNTALREADYLOGIN);
         }
@@ -130,6 +130,22 @@ public class UserServiceImpl implements UserService {
         jedisClient.expire(user.getUsername(), SSO_SESSION_EXPIRE);
         // 返回用户信息
         return CommonResult.ok(user);
+    }
+
+    @Override
+    public CommonResult userLogout(String token, HttpServletRequest request, HttpServletResponse response) {
+        // 根据token从redis中查询用户信息
+        String json = jedisClient.get(Constants.REDIS_USER_SESSION_KEY + ":" + token);
+        // 不为空表示用户出于登录状态
+        if (StringUtils.isNotBlank(json)) {
+            BozTUser user = JsonUtils.jsonToPojo(json, BozTUser.class);
+            // 清楚redis中的用户缓存
+            jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, 0);
+            jedisClient.expire(user.getUsername(), 0);
+            // 清楚cookie
+            CookieUtils.setCookie(request, response, Constants.COOKIE_NAME, token);
+        }
+        return CommonResult.ok();
     }
 
 }

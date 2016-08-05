@@ -94,7 +94,7 @@
                             $.post("/user/login", $("#loginForm").serialize(), function(data) {
                                 if (data.status == 200) {
                                     if (redirectUrl == "") {
-                                        location.href = "http://localhost:8082";
+                                        location.href = "http://localhost:8080/main";
                                     } else {
                                         location.href = redirectUrl;
                                     }

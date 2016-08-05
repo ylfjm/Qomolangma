@@ -17,6 +17,9 @@ public class Constants {
     /** The Constant COOKIE_NAME. */
     public static final String COOKIE_NAME = "BOZ_TOKEN";
 
+    /** The Constant FORCED_EXIT. */
+    public static final String FORCED_EXIT = "FORCED_EXIT";
+
     /** The Constant ERROR_MSG_CHECKCONTENTNULL. */
     public static final String ERROR_MSG_CHECKCONTENTNULL = "校验内容不能为空";
 
