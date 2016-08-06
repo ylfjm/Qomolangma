@@ -32,44 +32,43 @@
 		<property name="blockWhenExhausted" value="false" />
 	</bean>
 	<!-- jedis客户端单机版 -->
-	<bean id="redisClient" class="redis.clients.jedis.JedisPool">
+	<!-- <bean id="redisClient" class="redis.clients.jedis.JedisPool">
 		<constructor-arg name="host" value="${redis.single.host}"></constructor-arg>
 		<constructor-arg name="port" value="${redis.single.port}"></constructor-arg>
 		<constructor-arg name="poolConfig" ref="jedisPoolConfig"></constructor-arg>
 	</bean>
-	<bean id="jedisClient" class="com.boz.dao.redis.impl.JedisClientSingle"></bean>
+	<bean id="jedisClient" class="com.boz.dao.redis.impl.JedisClientSingle"></bean> -->
 	<!-- jedis客户端集群版 -->
-	<!-- 
 	<bean id="redisClient" class="redis.clients.jedis.JedisCluster">
 		<constructor-arg name="nodes">
 			<set>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="192.168.25.153"></constructor-arg>
-					<constructor-arg name="port" value="7001"></constructor-arg>
+					<constructor-arg name="host" value="${redis.cluster.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.cluster.port1}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="192.168.25.153"></constructor-arg>
-					<constructor-arg name="port" value="7002"></constructor-arg>
+					<constructor-arg name="host" value="${redis.cluster.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.cluster.port2}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="192.168.25.153"></constructor-arg>
-					<constructor-arg name="port" value="7003"></constructor-arg>
+					<constructor-arg name="host" value="${redis.cluster.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.cluster.port3}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="192.168.25.153"></constructor-arg>
-					<constructor-arg name="port" value="7004"></constructor-arg>
+					<constructor-arg name="host" value="${redis.cluster.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.cluster.port4}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="192.168.25.153"></constructor-arg>
-					<constructor-arg name="port" value="7005"></constructor-arg>
+					<constructor-arg name="host" value="${redis.cluster.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.cluster.port5}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="192.168.25.153"></constructor-arg>
-					<constructor-arg name="port" value="7006"></constructor-arg>
+					<constructor-arg name="host" value="${redis.cluster.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.cluster.port6}"></constructor-arg>
 				</bean>
 			</set>
 		</constructor-arg>
 		<constructor-arg name="poolConfig" ref="jedisPoolConfig"></constructor-arg>
 	</bean>
-	 -->
+	<bean id="jedisClient" class="com.boz.sso.dao.redis.impl.JedisClientCluster"></bean>
 </beans>

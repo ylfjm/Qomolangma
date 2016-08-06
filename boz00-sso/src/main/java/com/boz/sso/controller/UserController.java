@@ -4,7 +4,7 @@
 /**
  * 
  */
-package com.boz.sso.web.controller;
+package com.boz.sso.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +22,7 @@ import com.boz.common.constants.Constants;
 import com.boz.common.utils.CommonResult;
 import com.boz.common.utils.ExceptionUtil;
 import com.boz.pojo.BozTUser;
-import com.boz.service.UserService;
+import com.boz.sso.service.UserService;
 
 /**
  * UserController.
@@ -35,6 +35,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 用户校验
+     * @param param
+     * @param type
+     * @param callback
+     * @return
+     */
     @RequestMapping("/user/check/{param}/{type}")
     @ResponseBody
     public Object checkData(@PathVariable String param, @PathVariable Integer type, String callback) {
@@ -72,6 +79,10 @@ public class UserController {
         return result;
     }
 
+    /**
+     * @param user
+     * @return
+     */
     @RequestMapping("/user/register")
     @ResponseBody
     public CommonResult createUser(BozTUser user) {
@@ -82,6 +93,13 @@ public class UserController {
         }
     }
 
+    /**
+     * @param username
+     * @param password
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult userLogin(String username, String password, HttpServletRequest request, HttpServletResponse response) {
@@ -92,6 +110,11 @@ public class UserController {
         }
     }
 
+    /**
+     * @param token
+     * @param callback
+     * @return
+     */
     @RequestMapping("/user/token/{token}")
     @ResponseBody
     public Object getUserByToken(@PathVariable String token, String callback) {
@@ -110,6 +133,13 @@ public class UserController {
         return mappingJacksonValue;
     }
 
+    /**
+     * @param token
+     * @param callback
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("/user/logout/{token}")
     @ResponseBody
     public Object userLogout(@PathVariable String token, String callback, HttpServletRequest request, HttpServletResponse response) {

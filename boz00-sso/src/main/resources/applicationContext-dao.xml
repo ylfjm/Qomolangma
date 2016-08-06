@@ -20,16 +20,16 @@
 	</bean>
 	<!-- 配置sqlsessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configLocation" value="classpath:SqlMapConfig.xml"></property>
+		<!-- <property name="configLocation" value="classpath:SqlMapConfig.xml"></property> -->
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- <property name="mapperLocations">
             <list>
-                <value>classpath:com/boz/dao/mapper/*.xml</value>
+                <value>classpath:com/boz/sso/dao/mapper/*.xml</value>
             </list>
         </property> -->
 	</bean>
 	<!-- 配置扫描包，加载mapper代理对象 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.boz.dao.mapper"></property>
+		<property name="basePackage" value="com.boz.sso.dao.mapper"></property>
 	</bean>
 </beans>
