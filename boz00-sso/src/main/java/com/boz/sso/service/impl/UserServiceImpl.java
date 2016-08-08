@@ -7,13 +7,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
@@ -28,13 +28,13 @@ import com.boz.sso.dao.mapper.BozTUserMapper;
 import com.boz.sso.dao.redis.JedisClient;
 import com.boz.sso.service.UserService;
 
-@Service
+@Named
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Inject
     private BozTUserMapper userMapper;
 
-    @Autowired
+    @Inject
     private JedisClient jedisClient;
 
     @Value("${SSO_SESSION_EXPIRE}")
@@ -143,7 +143,7 @@ public class UserServiceImpl implements UserService {
             jedisClient.expire(Constants.REDIS_USER_SESSION_KEY + ":" + token, 0);
             jedisClient.expire(user.getUsername(), 0);
             // 清楚cookie
-            CookieUtils.setCookie(request, response, Constants.COOKIE_NAME, token);
+            CookieUtils.deleteCookie(request, response, Constants.COOKIE_NAME);
         }
         return CommonResult.ok();
     }

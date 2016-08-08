@@ -6,11 +6,11 @@
  */
 package com.boz.sso.controller;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,11 +32,12 @@ import com.boz.sso.service.UserService;
 @Controller
 public class UserController {
 
-    @Autowired
+    @Inject
     private UserService userService;
 
     /**
      * 用户校验
+     * 
      * @param param
      * @param type
      * @param callback
