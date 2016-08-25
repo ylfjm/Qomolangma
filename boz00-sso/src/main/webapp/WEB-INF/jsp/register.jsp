@@ -190,7 +190,6 @@
                 });
             },
             regSuccess : function() {
-                alert(1);
                 location.href = "/page/regSuccess";
                 return false;
             },
