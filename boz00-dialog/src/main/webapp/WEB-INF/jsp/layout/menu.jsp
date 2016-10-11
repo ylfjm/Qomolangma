@@ -6,8 +6,3 @@
 <div>
     <a href="pageTwo" class="btn btn-primary menuBtn">page two</a>
 </div>
-<style type="text/css">
-.menuBtn {
-    width: 100px;
-}
-</style>

@@ -5,6 +5,7 @@
 <html lang="zh-cn">
 <head>
 <meta charset="UTF-8" />
+<title>Dialog Demo Page</title>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-dialog.css">
@@ -20,10 +21,13 @@
     margin: 0 auto;
 }
 .middle {
-    height: 500px;
+    height: 900px;
 }
 .menuLeft {
     width: 150px;
+}
+.menuBtn {
+    width: 100px;
 }
 </style>
 <body>
