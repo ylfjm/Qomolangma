@@ -5,7 +5,7 @@
             <a href="main"><img alt="" src="images/bozlogo.png"></a>
         </div>
         <div class="navbar-loginbar">
-            <div id="loginbar"><a href='http://localhost:8081/page/register'>[免费注册]</a>&nbsp;<a href='http://localhost:8081/page/login'>[登录]</a></div>
+            <div id="loginbar"><a href='/page/register'>[免费注册]</a>&nbsp;<a href='/page/login'>[登录]</a></div>
         </div>
         <div class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">

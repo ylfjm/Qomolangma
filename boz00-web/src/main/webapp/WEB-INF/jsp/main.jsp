@@ -11,54 +11,54 @@
         <h1>首页内容即将呈现。。。</h1>
     </div>
     <script type="text/javascript">
-                    var TT = {
-                        checkLogin : function() {
-                            var _ticket = $.cookie("BOZ_TOKEN");
-                            if (!_ticket) {
-                                return;
-                            }
-                            $.ajax({
-                                url : "http://localhost:8081/user/token/" + _ticket,
-                                dataType : "jsonp",
-                                type : "GET",
-                                success : function(data) {
-                                    if (data.status == 200) {
-                                        var username = data.data.username;
-                                        var html = "欢迎&nbsp;" + username + "&nbsp;<a href='#' onclick='TT.logout();'>[退出]</a>";
-                                        $("#loginbar").html(html);
-                                    } else {
-                                        $("#loginbar").html("<a href='http://localhost:8081/page/register'>[免费注册]</a>&nbsp;<a href='http://localhost:8081/page/login'>[登录]</a>");
-                                    }
-                                }
-                            });
-                        },  
-                        logout : function() {
-                            if (!confirm("您确定要退出吗？")) {
-                                return;
-                            }
-                            var _ticket = $.cookie("BOZ_TOKEN");
-                            if (!_ticket) {
-                                return;
-                            }
-                            $.ajax({
-                                url : "http://localhost:8081/user/logout/" + _ticket,
-                                dataType : "jsonp",
-                                type : "GET",
-                                success : function(data) {
-                                    if (data.status == 200) {
-                                        var html = "<a href='http://localhost:8081/page/register'>[免费注册]</a>&nbsp;<a href='http://localhost:8081/page/login'>[登录]</a>";
-                                        $("#loginbar").html(html);
-                                    } else {
-                                        $("#loginbar").html(data.data);
-                                    }
-                                }
-                            });
+        var TT = {
+            checkLogin : function() {
+                var _ticket = $.cookie("BOZ_TOKEN");
+                if (!_ticket) {
+                    return;
+                }
+                $.ajax({
+                    url : "/user/token/" + _ticket,
+                    dataType : "jsonp",
+                    type : "GET",
+                    success : function(data) {
+                        if (data.status == 200) {
+                            var username = data.data.username;
+                            var html = "欢迎&nbsp;" + username + "&nbsp;<a href='#' onclick='TT.logout();'>[退出]</a>";
+                            $("#loginbar").html(html);
+                        } else {
+                            $("#loginbar").html("<a href='/page/register'>[免费注册]</a>&nbsp;<a href='/page/login'>[登录]</a>");
                         }
                     }
-                    $(function() {
-                        // 查看是否已经登录，如果已经登录查询登录信息
-                        TT.checkLogin();
+                });
+            },
+            logout : function() {
+                if (!confirm("您确定要退出吗？")) {
+                    return;
+                }
+                var _ticket = $.cookie("BOZ_TOKEN");
+                if (!_ticket) {
+                    return;
+                }
+                $.ajax({
+                    url : "/user/logout/" + _ticket,
+                    dataType : "jsonp",
+                    type : "GET",
+                    success : function(data) {
+                        if (data.status == 200) {
+                            var html = "<a href='/page/register'>[免费注册]</a>&nbsp;<a href='/page/login'>[登录]</a>";
+                            $("#loginbar").html(html);
+                        } else {
+                            $("#loginbar").html(data.data);
+                        }
+                    }
+                });
+            }
+        }
+        $(function() {
+            // 查看是否已经登录，如果已经登录查询登录信息
+            TT.checkLogin();
 
-                    });
-                </script>
+        });
+    </script>
 </div>

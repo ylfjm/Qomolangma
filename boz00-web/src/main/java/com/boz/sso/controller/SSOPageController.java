@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author E470756
  */
 @Controller
-public class PageController {
+public class SSOPageController {
 
     @RequestMapping("/page/login")
     public String login() {

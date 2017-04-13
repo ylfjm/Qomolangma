@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author E470756
  */
 @Controller
-public class UserController {
+public class SSOUserController {
 
     @Inject
     private UserService userService;
