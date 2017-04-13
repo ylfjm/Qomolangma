@@ -9,10 +9,9 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 	<!-- 扫描包加载Service实现类 -->
-    <context:component-scan base-package="com.boz.service" />
+    <context:component-scan base-package="com.boz.*.service" />
     <!-- 加载配置文件 -->
     <context:property-placeholder location="classpath:resource.properties" />
-    <import resource="applicationContext-dao.xml" />
     <import resource="applicationContext-redis.xml" />
     <import resource="applicationContext-trans.xml" />
 </beans>

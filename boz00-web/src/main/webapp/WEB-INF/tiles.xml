@@ -18,6 +18,19 @@
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
     </definition>
+
+    <!--SSO-->
+    <definition name="login" extends="none">
+        <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+    </definition>
+    <definition name="register" extends="none">
+        <put-attribute name="body" value="/WEB-INF/jsp/register.jsp" />
+    </definition>
+    <definition name="regSuccess" extends="none">
+        <put-attribute name="body" value="/WEB-INF/jsp/regSuccess.jsp" />
+    </definition>
+
+    <!--WEB-->
     <definition name="index" extends="none">
         <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
     </definition>

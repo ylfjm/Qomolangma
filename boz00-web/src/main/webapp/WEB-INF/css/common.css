@@ -5,6 +5,8 @@ body {
 		Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 	background-color: #F5F5F5;
 	/* background: url(../images/csdn_bg.jpg); */
+	font-size: 13px;
+	line-height: 19px;
 }
 
 @media ( min-width : 1200px) {
@@ -58,3 +60,135 @@ body {
 .base-footer p {
 	margin-bottom: 0;
 }
+
+/*****************************SSO****************************/
+.page-logo {
+	width: 350px;
+	margin: 15px auto 0 auto;
+	text-align: center;
+}
+
+.page-container {
+	width: 350px;
+	margin: 20px auto 0 auto;
+}
+
+.page-box {
+	display: block;
+	border-radius: 4px;
+	border: 1px #ddd solid;
+	background-color: #fff;
+}
+
+.page-box-inner {
+	border-radius: 4px;
+	position: relative;
+	padding: 15px 18px;
+}
+
+.page-box-inner h1 {
+	font-weight: 400;
+	font-size: 28px;
+	line-height: 1.2;
+	margin-bottom: 10px;
+}
+
+.page-box-row {
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.page-box-submit {
+	margin-top: 20px;
+}
+
+.page-box-divider {
+	width: 100%;
+	height: 2px;
+	background-color: #f5f5f5;
+	margin: 20px auto;
+	/* background: linear-gradient(rgba(0, 0, 0, 0.137255), rgba(0, 0, 0, 0.027451) 3px, transparent); */
+}
+
+.page-box-warning {
+	padding: 0;
+	color: #c40000;
+	position: relative;
+	padding-left: 16px;
+	display: none;
+}
+
+.page-box-warning-icon {
+	height: 13px;
+	width: 14px;
+	position: absolute;
+	left: 7px;
+	top: 2px;
+	display: inline-block;
+	vertical-align: top;
+	background-image: url(../images/Boz_UIBaseCSS.png);
+	background-position: -141px -130px;
+	background-size: 400px 650px;
+	background-repeat: no-repeat;
+	vertical-align: top;
+}
+
+.page-box-warning-content {
+	text-align: left;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.page-box-error-icon {
+	height: 27px;
+	width: 30px;
+	position: absolute;
+	left: 18px;
+	top: 15px;
+	display: inline-block;
+	vertical-align: top;
+	background-image: url(../images/Boz_UIBaseCSS.png);
+	background-position: -248px -35px;
+	background-size: 400px 650px;
+	background-repeat: no-repeat;
+	vertical-align: top;
+}
+.page-box-inner h4 {
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 1.2;
+	margin-left: 50px;
+	margin-top: 0;
+	margin-bottom: 4px;
+	color: #c40000;
+
+}
+
+.page-box-error-content {
+	margin-left: 50px;
+}
+
+#reg_resp_err {
+	display: none;
+}
+
+.page-box-success-icon {
+	height: 27px;
+	width: 30px;
+	position: absolute;
+	left: 18px;
+	top: 11px;
+	display: inline-block;
+	vertical-align: top;
+	background-image: url(../images/Boz_UIBaseCSS.png);
+	background-position: -315px -35px;
+	background-size: 400px 650px;
+	background-repeat: no-repeat;
+	vertical-align: top;
+}
+
+.page-box-success-content {
+	font-size: 15px;
+	text-align: center;
+}
+/*****************************SSO****************************/
