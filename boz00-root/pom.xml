@@ -10,7 +10,6 @@
 		<module>../boz00-common</module>
 		<module>../boz00-pojo</module>
 		<module>../boz00-web</module>
-		<module>../boz00-sso</module>
 	</modules>
 	<!-- 集中定义依赖版本号 -->
 	<properties>
@@ -40,7 +39,39 @@
 		<tiles.version>3.0.5</tiles.version>
 		<!-- org.glassfish.hk2.external:javax.inject -->
 		<javaxInjectVersion>2.4.0-b06</javaxInjectVersion>
+		<xstream.version>1.4.3</xstream.version>
+        <httpcomponents.version>4.3.2</httpcomponents.version>
+        <fastjson.version>1.2.7</fastjson.version>
+        <zxing.version>3.2.1</zxing.version>
 	</properties>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>local private nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>local private nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
 	<!-- 只定义依赖的版本，并不实际依赖 -->
 	<dependencyManagement>
 		<dependencies>
@@ -134,7 +165,18 @@
 				<artifactId>druid</artifactId>
 				<version>${druid.version}</version>
 			</dependency>
+            <!-- alibaba json -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
 			<!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
@@ -145,6 +187,21 @@
 				<artifactId>spring-beans</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
@@ -155,6 +212,16 @@
 				<artifactId>spring-jdbc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aspects</artifactId>
@@ -184,11 +251,37 @@
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons-fileupload.version}</version>
 			</dependency>
+            <!--HTTP请求组件-->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpcomponents.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpcomponents.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpcomponents.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
 			<!-- Redis客户端 -->
 			<dependency>
 				<groupId>redis.clients</groupId>
 				<artifactId>jedis</artifactId>
 				<version>${jedis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>${xstream.version}</version>
 			</dependency>
 			<!-- solr客户端 -->
 			<dependency>
@@ -206,10 +299,34 @@
 				<artifactId>tiles-jsp</artifactId>
 				<version>${tiles.version}</version>
 			</dependency>
+
+            <!--二维码-->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+
+			<!-- Quartz 2.2.x Maven Snippets -->
+			<!--<dependency>-->
+				<!--<groupId>org.quartz-scheduler</groupId>-->
+				<!--<artifactId>quartz</artifactId>-->
+				<!--<version>2.2.1</version>-->
+			<!--</dependency>-->
+			<!--<dependency>-->
+				<!--<groupId>org.quartz-scheduler</groupId>-->
+				<!--<artifactId>quartz-jobs</artifactId>-->
+				<!--<version>2.2.1</version>-->
+			<!--</dependency>-->
+			<!--<dependency>-->
+				<!--<groupId>javax.transaction</groupId>-->
+				<!--<artifactId>jta</artifactId>-->
+				<!--<version>1.1</version>-->
+			<!--</dependency>-->
 		</dependencies>
 	</dependencyManagement>
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>qomolangma</finalName>
 		<plugins>
 			<!-- 资源文件拷贝插件 -->
 			<plugin>
@@ -229,6 +346,21 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+					<outputDirectory>${project.build.directory}/qomolangma/WEB-INF/lib</outputDirectory>
+					<excludeTransitive>false</excludeTransitive>
+					<stripVersion>true</stripVersion>
 				</configuration>
 			</plugin>
 		</plugins>
