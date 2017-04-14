@@ -1,8 +1,5 @@
 package com.boz.common.utils;
 
-import com.tocersoft.base.form.BaseForm;
-import org.springframework.validation.BeanPropertyBindingResult;
-
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -72,10 +69,6 @@ public class JsonBuilder {
             return encodeArray((Object[]) object);
         } else if (object instanceof Date) {
             return encodeDate((Date) object);
-        } else if (object instanceof BeanPropertyBindingResult) {
-            return encodeEmpty();
-        } else if (object instanceof BaseForm) {
-            return encodeEmpty();
         } else {
             Class clazz = object.getClass();
 

@@ -57,4 +57,9 @@
     <definition name="showDialog" extends="none">
         <put-attribute name="body" value="/WEB-INF/jsp/dialog.jsp" />
     </definition>
+
+    <!--urmlv-->
+    <definition name="urmlv" extends="none">
+        <put-attribute name="body" value="/WEB-INF/jsp/urmlv.jsp" />
+    </definition>
 </tiles-definitions>

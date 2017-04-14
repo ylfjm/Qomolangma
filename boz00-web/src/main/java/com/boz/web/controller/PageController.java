@@ -43,4 +43,9 @@ public class PageController {
     public String showMsgBoard() {
         return "msgboard";
     }
+
+    @RequestMapping("/urmlv")
+    public String urmlv() {
+        return "urmlv";
+    }
 }

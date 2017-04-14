@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>宇宙第一美</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <%--<meta name="keywords" content="生日礼物，惊喜,有趣,最美" />--%>
-    <%--<meta name="description" content="世界上最美的女人，是老吸，但是她不喜欢我 ಥ_ಥ " />--%>
+    <meta name="keywords" content="雪婷,yuki,汪雪婷,yuki大美女" />
+    <%--<meta name="description" content="" />--%>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
     <style>
         .container {
-            margin-top: 40px;
+            margin-top: 50px;
             width: 750px;
         }
 
@@ -45,7 +45,7 @@
             <a href="" class="thumbnail"><img src="/images/4.jpg" alt=""></a>
         </div>
         <div class="col-xs-4 col-md-4">
-            <a href="" class="thumbnail"><img src="/images/4.jpg" alt=""></a>
+            <a href="" class="thumbnail"><img src="/images/5.jpg" alt=""></a>
         </div>
         <div class="col-xs-4 col-md-4">
             <a href="" class="thumbnail"><img src="/images/6.jpg" alt=""></a>
