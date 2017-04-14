@@ -31,13 +31,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-4 col-md-4">
-            <a href="" class="thumbnail"><img src="/images/1.jpg" alt="..."></a>
+            <a href="" class="thumbnail"><img src="/images/1.jpg" alt=""></a>
         </div>
         <div class="col-xs-4 col-md-4">
-            <a href="" class="thumbnail"><img src="/images/2.jpg" alt="..."></a>
+            <a href="" class="thumbnail"><img src="/images/2.jpg" alt=""></a>
         </div>
         <div class="col-xs-4 col-md-4">
-            <a href="" class="thumbnail"><img src="/images/3.jpg" alt="..."></a>
+            <a href="" class="thumbnail"><img src="/images/3.jpg" alt=""></a>
         </div>
     </div>
     <div class="row">
