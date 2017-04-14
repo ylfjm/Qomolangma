@@ -6,6 +6,7 @@
  */
 package com.boz.web.controller;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author E470756
  */
 @Controller
+@Scope("prototype")
 public class PageController {
 
     @RequestMapping("/")

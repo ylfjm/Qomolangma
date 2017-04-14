@@ -12,6 +12,7 @@ import com.boz.common.utils.ExceptionUtil;
 import com.boz.pojo.BozTUser;
 import com.boz.sso.service.UserService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author E470756
  */
 @Controller
+@Scope("prototype")
 public class SSOUserController {
 
     @Inject

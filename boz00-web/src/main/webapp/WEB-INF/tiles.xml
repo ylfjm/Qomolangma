@@ -46,4 +46,15 @@
     <definition name="msgboard" extends="general">
         <put-attribute name="body" value="/WEB-INF/jsp/msgboard.jsp" />
     </definition>
+
+    <!--DIALOG-->
+    <definition name="pageOne" extends="general">
+        <put-attribute name="body" value="/WEB-INF/jsp/pageOne.jsp" />
+    </definition>
+    <definition name="pageTwo" extends="general">
+        <put-attribute name="body" value="/WEB-INF/jsp/pageTwo.jsp" />
+    </definition>
+    <definition name="showDialog" extends="none">
+        <put-attribute name="body" value="/WEB-INF/jsp/dialog.jsp" />
+    </definition>
 </tiles-definitions>
