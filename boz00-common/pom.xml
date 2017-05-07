@@ -1,18 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.boz</groupId>
         <artifactId>boz00-root</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../boz00-root</relativePath>
+        <groupId>com.boz</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../boz00-root/pom.xml</relativePath>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>boz00-common</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.boz</groupId>
             <artifactId>boz00-pojo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- 时间操作组件 -->
         <dependency>
@@ -75,12 +77,12 @@
             <artifactId>xstream</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>javax.crypto</groupId>
-            <artifactId>zip</artifactId>
-            <version>1.6.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jce.jar</systemPath>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>javax.crypto</groupId>-->
+        <!--<artifactId>zip</artifactId>-->
+        <!--<version>1.6.0</version>-->
+        <!--<scope>system</scope>-->
+        <!--<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/jce.jar</systemPath>-->
+        <!--</dependency>-->
     </dependencies>
 </project>
