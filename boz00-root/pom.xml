@@ -8,7 +8,6 @@
 
 	<modules>
 		<module>../boz00-common</module>
-		<module>../boz00-pojo</module>
 		<module>../boz00-dao</module>
 		<module>../boz00-service</module>
 		<module>../boz00-web</module>

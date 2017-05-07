@@ -20,7 +20,12 @@
         </dependency>
         <dependency>
             <groupId>com.boz</groupId>
-            <artifactId>boz00-pojo</artifactId>
+            <artifactId>boz00-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.boz</groupId>
+            <artifactId>boz00-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- 日志处理 -->
@@ -123,6 +128,11 @@
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.boz</groupId>
+            <artifactId>boz00-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

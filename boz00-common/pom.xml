@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.boz</groupId>
-            <artifactId>boz00-pojo</artifactId>
+            <artifactId>boz00-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- 时间操作组件 -->

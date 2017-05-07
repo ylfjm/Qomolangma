@@ -9,8 +9,8 @@ package com.boz.sso.controller;
 import com.boz.common.constants.Constants;
 import com.boz.common.utils.CommonResult;
 import com.boz.common.utils.ExceptionUtil;
-import com.boz.pojo.BozTUser;
-import com.boz.sso.service.UserService;
+import com.boz.model.BozUser;
+import com.boz.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -87,7 +87,7 @@ public class SSOUserController {
      */
     @RequestMapping("/user/register")
     @ResponseBody
-    public CommonResult createUser(BozTUser user) {
+    public CommonResult createUser(BozUser user) {
         try {
             return userService.createUser(user);
         } catch (Exception e) {
